@@ -21,6 +21,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,6 +53,16 @@ public class PersonController extends BaseController {
         return modelAndView;
     }
     
+    @RequestMapping(value = "/{personId:[0-9]+}", method = RequestMethod.GET)
+    public ModelAndView create(
+            @PathVariable("personId") final int personId,
+            Locale locale) {
+        ModelAndView model = this.getModelAndView("detail", locale);
+        Person person = personRepository.findById(personId);
+        model.addObject("person", new PersonDetailViewModel(person));
+        return model;
+    }
+    
     @RequestMapping(value = "/Create", method = RequestMethod.GET)
     public ModelAndView create(
             Locale locale) {
@@ -70,6 +81,6 @@ public class PersonController extends BaseController {
         person.setUsername(personForm.getUsername());
         person.setPassword(new BCryptPasswordEncoder().encode(personForm.getPassword()));
         this.personRepository.save(person);
-        return "redirect:/Admin/Person/"; // TODO: add person.getId() here 
+        return "redirect:/Admin/Person/" + person.getPersonId(); 
     }
 }

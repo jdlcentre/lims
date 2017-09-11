@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	<head th:include="page :: head(title=${title})"></head>
+	<body>
+		<div th:include="page :: header"></div>
+
+		<h1>Person Details</h1>
+
+		<div th:text="${person.username}"></div>
+		<div th:text="${person.enabled}"></div>
+
+		<div th:include="page :: footer"></div>
+	</body>
+</html>
