@@ -316,7 +316,7 @@ public class AnalysisRequestController extends BaseController {
                 sb.append(",east=" + longitude + "; north=" + latitude + "; projection=WGS84");
                 sb.append(",POINT(" + longitude + " " + latitude + ")");
                 sb.append(String.format(",\"Mineralogical classification of %s from Geological Survey of Western Australia archive with TIMA (TESCAN Integrated Mineral Analyser) Energy-dispersive X-ray spectroscopy instrument. Sample %s from site %s, %s. File can be opened with %s.\"", 
-                        rockType, 
+                        rockType,
                         igsn,
                         siteCode,
                         tectonticUnit,

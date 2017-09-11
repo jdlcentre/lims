@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
+                .antMatchers("/Admin/**").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -37,15 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
                 .logoutUrl("/logout")
                 .permitAll();
-        
-        // TODO see Spring in Action, 4th Edition. 9.4.
-        // you will need to do something like:
-        /*
-         * antMatchers("/administration/**").hasAuthority("ROLE_ADMIN")...
-         * 
-         * add this for production too:
-         * .requiresChannel().anyRequest().requiresSecure()
-         */
     }
 
     // Override to configure Spring Security's filter chain.
