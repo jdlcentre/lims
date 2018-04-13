@@ -11,3 +11,5 @@ The LIMS currently has support for:
   * network attached drives
   * geospatially enabled databases (e.g. PostGIS)
   * Pawsey Supercomputing Centre storage services
+
+Please see https://github.com/jdlcentre/lims/wiki/Development-Environment-Set-Up for more.
